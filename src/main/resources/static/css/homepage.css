@@ -1,0 +1,84 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: Lato,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.72222;
+    color: #34495e;
+    background-color: #fff;
+}
+.wrap {
+    min-width: 100%;
+    position: absolute;
+    background: #eff3f6 bottom;
+    min-height: 100%;
+    overflow: hidden;
+}
+.left{
+    margin-left:0px;
+    position: absolute;
+    box-sizing: border-box;
+    width: 200px;
+    height: 100%;
+    background: #4d5e70 bottom;
+    flex-direction:column;
+}
+.right{
+    box-sizing: border-box;
+    float: left;
+    box-sizing: border-box;
+    padding-left: 200px;
+    overflow-y: overlay;
+    overflow-x: hidden;
+    clear: both;
+    color: #717592;
+    min-width: 100%;
+    min-height: 500px;
+}
+.logoDiv{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 70px;
+    min-width:100%;
+    background-color: #354457;
+    font-size: 17px;
+    color: #fff;
+    vertical-align: bottom;
+}
+.menu-title {
+    color: #828e9a;
+    padding-left:15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.menu-title.active{
+    background-color: #3d4e60;
+    border-right: 4px solid #647f9d;
+    color: #fff;
+}
+.dowonloadDiv{
+    height: 100px;
+    background-color: #29a497;
+    font-size: 17px;
+    color: #fff;
+    vertical-align: bottom;
+}
+.download{
+    padding-top: 30px;
+
+}
+.dowonloadBtn{
+    width:200px;
+    height:50px;
+    margin-right: 1.5rem !important
+}
+.userInfoHeader{
+    background-color: #29a497;
+    color: #000000;
+}
+.userInfoList{
+    margin-top: 1.5rem
+}

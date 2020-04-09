@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>中国铁路12306自动抢票</title>
+    <link rel="stylesheet" th:href="@{css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{css/12306login.css}"/>
+    <link rel="stylesheet" th:href="@{css/12306global.css}"/>
+    <link rel="stylesheet" th:href="@{css/12306public.css}"/>
+    <script type="text/javascript" th:src="@{js/jquery-3.3.1.js}"></script>
+    <script type="text/javascript" charset="utf-8" src="//g.alicdn.com/sd/ncpc/nc.js?t=2015052012"></script>
+</head>
+<script type="text/javascript">
+        console.info("123");
+        var nc_token = ['appkey', (new Date()).getTime(), Math.random()].join(':');
+        var NC_Opt = {
+            renderTo: $("#your-dom-id"), //页面中滑块位置 div 的 id
+            appkey: "FFFF0N000000000085DE", //阿里云申请的 appkey
+            scene: "nc_login", // 自己定义用于业务区分
+            token: nc_token,
+            customWidth: 300,
+            trans:{"key1":"code0"},
+            elementID: [""],
+            is_Opt: 0,
+            language: "cn",
+            isEnabled: true,
+            timeout: 3000,
+            times:5,
+
+            callback: function (data) {
+                // 滑动滑块验证通过, 插件的回调, 用于后端验证
+                // data 中包含 csessionid sig token value
+            }
+        }
+        var nc = new noCaptcha(NC_Opt);
+        nc.upLang('cn', {
+            _startTEXT: "请按住滑块，拖动到最右边",
+            _yesTEXT: "验证通过",
+            _error300: "哎呀，出错了，点击<a href=\"javascript:__nc.reset()\">刷新</a>再来一次",
+            _errorNetwork: "网络不给力，请<a href=\"javascript:__nc.reset()\">点击刷新</a>",
+        });
+
+</script>
+<body class="page-login">
+    <div class="header">
+        <div class="wrapper">
+            <!-- 头部内容 -->
+            <div class="header-con">
+                <h1 class="logo"><a href="https://www.12306.cn/index/index.html">中国铁路12306</a></h1>
+                <div class="header-welcome">欢迎登录12306</div>
+            </div>
+        </div>
+    </div>
+    <div class="login-panel">
+        <div class="loginSlide">
+            <div class="bd">
+                <div class="tempWrap" style="overflow: hidden; position: relative; width: auto;"><ul style="width: 5709px; position: relative; overflow: hidden; padding: 0px; margin: 0px; left: -1903px;"><li style="background: url(&quot;https://www.12306.cn/index/images/pic/banner-login.jpg&quot;) center center no-repeat; float: left; width: 1903px;" class="clone"><a href="https://exservice.12306.cn/excater/index.html"></a></li>
+
+                    <li style="background: url(&quot;https://www.12306.cn/index/images/pic/banner-login.jpg&quot;) center center no-repeat; float: left; width: 1903px;"><a href="https://exservice.12306.cn/excater/index.html"></a></li><li style="background: url(&quot;https://www.12306.cn/index/images/pic/banner-login.jpg&quot;) center center no-repeat; float: left; width: 1903px;" class="clone"><a href="https://exservice.12306.cn/excater/index.html"></a></li></ul></div>
+            </div>
+            <div class="hd"><ul><li class="on">1</li></ul></div>
+        </div>
+        <div class="login-box" style="margin-top: -267px;">
+            <div class="login-bd">
+                <!-- 扫码登录 -->
+                <div class="login-code" style="">
+                    <div id="J-login-code-loading" class="login-code-loading" style="display: none;"><img src="https://kyfw.12306.cn/otn/resources/images/loading.gif"></div>
+                    <div id="J-login-code-con" class="login-code-con" style="">
+                        <div class="login-code-main">
+                            <div class="code-pic" style="left: 80px;">
+                                <img id="J-qrImg" th:src="${qrImg}">
+                                <div id="J-code-error-mask" class="code-error-mask" style="display: block;" th:if="${codeError}"></div>
+                                <div id="J-code-error" class="code-error" style="display : block" th:if="${codeError}">
+                                    <p>二维码已失效</p>
+                                    <a href="javascript:;" class="btn btn-primary">刷新</a>
+                                </div>
+                            </div>
+                            <div class="code-tips" style="display: none;"><img src="https://kyfw.12306.cn/otn/resources/images/code-tips.png" alt=""></div>
+                        </div>
+                        <div class="login-code-txt">打开<span class="txt-primary">12306手机APP</span>  扫描二维码</div>
+                        <div class="login-code-txt"><a href="https://kyfw.12306.cn/otn/regist/init" class="txt-primary">注册12306账号</a></div>
+                    </div>
+                    <div id="J-login-code-success" class="login-code-con login-code-success hide">
+                        <img src="https://kyfw.12306.cn/otn/resources/images/login-success.png" alt="">
+                        <h3>扫描成功！</h3>
+                        <p>请勿刷新页面，在手机上确认登录！</p>
+                    </div>
+                    <ul class="login-code-ft">
+                        <li><i class="icon icon-scan"></i>扫一扫登录</li>
+                        <li><i class="icon icon-quick"></i>更快</li>
+                        <li class="last"><i class="icon icon-safe"></i>更安全</li>
+                    </ul>
+                </div>
+                <div id="your-dom-id" class="nc-container"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

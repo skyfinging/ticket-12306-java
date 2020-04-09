@@ -1,0 +1,41 @@
+package com.drama.train.ticket.service.http;
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class Http12306InitDcActionTest {
+
+//    @Test
+    public void test(){
+        String text = "";
+        String global = Http12306InitDcAction.getGlobalRepeatSubmitToken(text);
+        assertEquals("",global);
+
+        text = " var ctx='/otn/';\n" +
+                " var globalRepeatSubmitToken = '90adf9e47a1a9f11536304e3a6b78e64';\n" +
+                " var global_lang = 'zh_CN';";
+        global = Http12306InitDcAction.getGlobalRepeatSubmitToken(text);
+        assertEquals("90adf9e47a1a9f11536304e3a6b78e64", global);
+
+        text = " var globalRepeatSubmitToken='ff36a258129ebd084319479b7591bd64';";
+        global = Http12306InitDcAction.getGlobalRepeatSubmitToken(text);
+        assertEquals("ff36a258129ebd084319479b7591bd64", global);
+    }
+
+//    @Test
+    public void test2(){
+        String text = "";
+        String global = Http12306InitDcAction.getLeftTicket(text);
+        assertEquals("",global);
+
+        text = "u7968'],'leftTicketStr':'Oh5UDLk%2FcZhK6Hmer%2FTShIF%2Fa4ynNj6OpYvz945HSRtM25P4','limitBuySeatTicketDTO':{'seat_type_codes':[{'end_station_name':null,'end_time':null,'id':'M','sta";
+        global = Http12306InitDcAction.getLeftTicket(text);
+        assertEquals("Oh5UDLk%2FcZhK6Hmer%2FTShIF%2Fa4ynNj6OpYvz945HSRtM25P4", global);
+
+        text = "var ticketInfoForPassengerForm={'cardTypes':[{'end_station_name':null,'end_time':null,'id':'1','start_station_name':null,'start_time':null,'value':'\\u4E2D\\u56FD\\u5C45\\u6C11\\u8EAB\\u4EFD\\u8BC1'},{'end_station_name':null,'end_time':null,'id':'C','start_station_name':null,'start_time':null,'value':'\\u6E2F\\u6FB3\\u5C45\\u6C11\\u6765\\u5F80\\u5185\\u5730\\u901A\\u884C\\u8BC1'},{'end_station_name':null,'end_time':null,'id':'G','start_station_name':null,'start_time':null,'value':'\\u53F0\\u6E7E\\u5C45\\u6C11\\u6765\\u5F80\\u5927\\u9646\\u901A\\u884C\\u8BC1'},{'end_station_name':null,'end_time':null,'id':'B','start_station_name':null,'start_time':null,'value':'\\u62A4\\u7167'},{'end_station_name':null,'end_time':null,'id':'H','start_station_name':null,'start_time':null,'value':'\\u5916\\u56FD\\u4EBA\\u6C38\\u4E45\\u5C45\\u7559\\u8EAB\\u4EFD\\u8BC1'}],'isAsync':'1','key_check_isChange':'9C64B6EBD536C516520BB913A4AF3FE65279DB92C5D72030577D1E3A','leftDetails':['\\u4E00\\u7B49\\u5EA7(258.50\\u5143)15\\u5F20\\u7968','\\u4E8C\\u7B49\\u5EA7(184.50\\u5143)\\u6709\\u7968','\\u65E0\\u5EA7(184.50\\u5143)\\u6709\\u7968'],'leftTicketStr':'Oh5UDLk%2FcZhK6Hmer%2FTShIF%2Fa4ynNj6OpYvz945HSRtM25P4','limitBuySeatTicketDTO':{'seat_type_codes':[{'end_station_name':null,'end_time':null,'id':'M','start_station_name':null,'start_time':null,'value':'\\u4E00\\u7B49\\u5EA7'},{'end_station_name':null,'end_time':null,'id':'O','start_station_name':null,'start_time':null,'value':'\\u4E8C\\u7B49\\u5EA7'}],'ticket_seat_codeMap':{'3':[{'end_station_name':null,'end_time':null,'id':'O','start_station_name':null,'start_time':null,'value':'\\u4E8C\\u7B49\\u5EA7'}],'2':[{'end_station_name':null,'end_time':null,'id':'M','start_station_name':null,'start_time':null,'value':'\\u4E00\\u7B49\\u5EA7'},{'end_station_name':null,'end_time':null,'id':'O','start_station_name':null,'start_time':null,'value':'\\u4E8C\\u7B49\\u5EA7'}],'1':[{'end_station_name':null,'end_time':null,'id':'M','start_station_name':null,'start_time':null,'value':'\\u4E00\\u7B49\\u5EA7'},{'end_station_name':null,'end_time':null,'id':'O','start_station_name':null,'start_time':null,'value':'\\u4E8C\\u7B49\\u5EA7'}],'4':[{'end_station_name':null,'end_time':null,'id':'M','start_station_name':null,'start_time':null,'value':'\\u4E00\\u7B49\\u5EA7'},{'end_station_name':null,'end_time':null,'id':'O','start_station_name':null,'start_time':null,'value':'\\u4E8C\\u7B49\\u5EA7'}]},'ticket_type_codes':[{'end_station_name':null,'end_time':null,'id':'1','start_station_name':null,'start_time':null,'value':'\\u6210\\u4EBA\\u7968'},{'end_station_name':null,'end_time':null,'id':'2','start_station_name':null,'start_time':null,'value':'\\u513F\\u7AE5\\u7968'},{'end_station_name':null,'end_time':null,'id':'3','start_station_name':null,'start_time':null,'value':'\\u5B66\\u751F\\u7968'},{'end_station_name':null,'end_time':null,'id':'4','start_station_name':null,'start_time':null,'value':'\\u6B8B\\u519B\\u7968'}]},'maxTicketNum':'5','orderRequestDTO':{'adult_num':0,'apply_order_no':null,'bed_level_order_num':null,'bureau_code':null,'cancel_flag':null,'card_num':null,'channel':null,'child_num':0,'choose_seat':null,'disability_num':0,'end_time':{'date':1,'day':4,'hours':12,'minutes':24,'month':0,'seconds':0,'time':15840000,'timezoneOffset':-480,'year':70},'exchange_train_flag':'0','from_station_name':'\\u5E7F\\u5DDE\\u4E1C','from_station_telecode':'GGQ','get_ticket_pass':null,'id_mode':'Y','isShowPassCode':null,'leftTicketGenTime':null,'order_date':null,'passengerFlag':null,'realleftTicket':null,'reqIpAddress':null,'reqTimeLeftStr':null,'reserve_flag':'A','seat_detail_type_code':null,'seat_type_code':null,'sequence_no':null,'start_time':{'date':1,'day':4,'hours':9,'minutes':21,'month':0,'seconds':0,'time':4860000,'timezoneOffset':-480,'year':70},'start_time_str':null,'station_train_code':'D7501','student_num':0,'ticket_num':0,'ticket_type_order_num':null,'to_station_name':'\\u6F6E\\u6C55','to_station_telecode':'CBQ','tour_flag':'dc','trainCodeText':null,'train_date':{'date':2,'day':0,'hours':0,'minutes':0,'month':1,'seconds':0,'time':1580572800000,'timezoneOffset':-480,'year':120},'train_date_str':null,'train_location':null,'train_no':'65000D750110','train_order':null,'trms_train_flag':null,'varStr':null},'purpose_codes':'00','queryLeftNewDetailDTO':{'BXRZ_num':'-1','BXRZ_price':'0','BXYW_num':'-1','BXYW_price':'0','EDRZ_num':'-1','EDRZ_price':'0','EDSR_num':'-1','EDSR_price':'0','ERRB_num':'-1','ERRB_price':'0','GG_num':'-1','GG_price':'0','GR_num':'-1','GR_price':'0','HBRW_num':'-1','HBRW_price':'0','HBRZ_num':'-1','HBRZ_price':'0','HBYW_num':'-1','HBYW_price':'0','HBYZ_num':'-1','HBYZ_price':'0','RW_num':'-1','RW_price':'0','RZ_num':'-1','RZ_price':'0','SRRB_num':'-1','SRRB_price':'0','SWZ_num':'-1','SWZ_price':'0','TDRZ_num':'-1','TDRZ_price':'0','TZ_num':'-1','TZ_price':'0','WZ_num':'78','WZ_price':'01845','WZ_seat_type_code':'O','YB_num':'-1','YB_price':'0','YDRZ_num':'-1','YDRZ_price':'0','YDSR_num':'-1','YDSR_price':'0','YRRB_num':'-1','YRRB_price':'0','YW_num':'-1','YW_price':'0','YYRW_num':'-1','YYRW_price':'0','YZ_num':'-1','YZ_price':'0','ZE_num':'29','ZE_price':'01845','ZY_num':'15','ZY_price':'02585','arrive_time':'1224','control_train_day':'','controlled_train_flag':null,'controlled_train_message':null,'day_difference':null,'end_station_name':null,'end_station_telecode':null,'from_station_name':'\\u5E7F\\u5DDE\\u4E1C','from_station_telecode':'GGQ','is_support_card':null,'lishi':'03:03','seat_feature':'','start_station_name':null,'start_station_telecode':null,'start_time':'0921','start_train_date':'','station_train_code':'D7501','to_station_name':'\\u6F6E\\u6C55','to_station_telecode':'CBQ','train_class_name':null,'train_no':'65000D750110','train_seat_feature':'','yp_ex':''},'queryLeftTicketRequestDTO':{'arrive_time':'12:24','bigger20':'Y','exchange_train_flag':'0','from_station':'GGQ','from_station_name':'\\u5E7F\\u5DDE\\u4E1C','from_station_no':'01','lishi':'03:03','login_id':null,'login_mode':null,'login_site':null,'purpose_codes':'00','query_type':null,'seatTypeAndNum':null,'seat_types':'OMO','start_time':'09:21','start_time_begin':null,'start_time_end':null,'station_train_code':'D7501','ticket_type':null,'to_station':'CBQ','to_station_name':'\\u6F6E\\u6C55','to_station_no':'06','train_date':'20200202','train_flag':null,'train_headers':null,'train_no':'65000D750110','trms_train_flag':null,'useMasterPool':true,'useWB10LimitTime':true,'usingGemfireCache':false,'ypInfoDetail':'Oh5UDLk%2FcZhK6Hmer%2FTShIF%2Fa4ynNj6OpYvz945HSRtM25P4'},'tour_flag':'dc','train_location':'Q6'};";
+        global = Http12306InitDcAction.getLeftTicket(text);
+        assertEquals("Oh5UDLk%2FcZhK6Hmer%2FTShIF%2Fa4ynNj6OpYvz945HSRtM25P4", global);
+    }
+
+}
